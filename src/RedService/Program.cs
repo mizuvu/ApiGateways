@@ -8,9 +8,26 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+var name = "Red";
+
 app.MapGet("/", () =>
 {
-    return "Red";
+    return $"{name}";
+});
+
+app.MapGet("/hello", () =>
+{
+    return $"Hello from {name}";
+});
+
+app.MapPost("/hello", () =>
+{
+    return $"Hello POST from {name}";
+});
+
+app.MapGet("/goodbye", () =>
+{
+    return $"Bye bye from {name}";
 });
 
 app.Run();

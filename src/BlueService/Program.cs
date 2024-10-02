@@ -8,14 +8,27 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+var name = "Blue";
+
 app.MapGet("/", () =>
 {
-    return "Blue";
+    return $"{name}";
+});
+
+app.MapGet("/hello", () =>
+{
+    return $"Hello from {name}";
+});
+
+app.MapPost("/hello", () =>
+{
+    return $"Hello POST from {name}";
+});
+
+
+app.MapGet("/goodbye", () =>
+{
+    return $"Bye bye from {name}";
 });
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
